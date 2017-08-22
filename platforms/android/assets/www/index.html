@@ -384,74 +384,7 @@
        </div>
 
   </div>
-  <div data-role="page" id="pagos">
-      <div data-role="panel" id="panelp7">
-      	<img src="img/logob.png" class="elm-cent" width="120px" /><br />
-      	<img src="img/cuenta.png" class="elm-cent" width="120px" /><br />
-      	<div class="datos elm-cent">
-      		<img src="img/user.png" class="useri" />
-      		<div>
-      		<p class="usuario"></p>
-      		</div>
-      	</div>
-      
-      	<br /><br />
-       <ul data-role="listview">
-        <li class="menitem" data-icon="false"><a href="#inicio" data-transition="slidedown">Menú</a></li>
-        <li class="menitem" data-icon="false"><a href="#pedidos" data-transition="slideup">Pedidos</a></li>
-        <li class="menitem" data-icon="false"><a href="#ayuda" data-transition="slide">Ayuda</a></li>
-        <li class="menitem" data-icon="false"><a href="#notificaciones" data-transition="slide">Notificaciones</a></li>
-        <li class="menitem" data-icon="false"><a href="#poppa" data-rel="popup" data-position-to="window" data-transition="pop">Cerrar Sesión</a></li>
-      
-      </ul>
-     </div>
-     <div data-role="header" class="headerb">
-          <a href="#panelp7" id="menbu" class="menub ui-btn ui-icon-home ui-btn-icon-left" ></a>
-          <img class="logoi elm-cent" width="170px"  src="img/pagis.png" />
-          <a href="#pedidos" data-transition="slideup" class="cart" ></a> 
-    </div>
-    <div data-role="main" class="ui-content">
-    	
-    <div class="lback">
-    	<img src="img/peds.png"  width="100%" />
-    	<div class="innerl">
-    		<br />
-    		<div  class="headt">
-    		   <h1>Datos de pago</h1>
-    		</div>
-    		<form id="payForm" method="post">
-    			<label>Nombre del titular</label>
-    			<input type="text" id="nombre" placeholder="Nombre del titular" data-conekta="card[name]" />
-    			<label>Número de Tarjeta</label>
-    			<input type="text" id="card" data-conekta="card[number]"  />
-    			<label>CVV</label>
-    			<input type="text" id="cvv" data-conekta="card[cvc]" />
-    			<label>Fecha de vencimiento</label>
-    			<div class="cardd">
-    			<input type="text" id="expmonth" placeholder="mm" data-conekta="card[exp_month]"/>&nbsp;
-    			<input type="text" id="expyear" placeholder="aaaa" data-conekta="card[exp_year]" />
-    			</div>
-    		</form>
-    		<br />
-    	
-    		<button id="payOrder" type="button"  class="confb" ><p>Confirmar</p></button>
-    		<br /><br />
-    	</div>
-    </div>
- 	
- 	</div>
- 	<div data-role="popup" id="poppa" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
-    <div data-role="header" data-theme="a">
-    <h1>Cerrar sesión</h1>
-    </div>
-       <div role="main" class="ui-content">
-        <h3 class="ui-title">¿Esta seguro que desea salir?</h3>
-        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Cancelar</a>
-        <a  class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b close"  data-transition="flow">Salir</a>
-         </div>
-       </div>
-
-  </div>
+  
   <div data-role="page" id="ayuda">
       <div data-role="panel" id="panelp8">
       	<img src="img/logob.png" class="elm-cent" width="120px" /><br />
