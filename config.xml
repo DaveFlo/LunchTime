@@ -2,7 +2,7 @@
 <widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Tiempo de Lunch</name>
     <description>
-        Aplicación para venta de productos de cafeterías
+        Aplicación para venta de productos de cafeterias
     </description>
     <author email="support@phonegap.com" href="http://phonegap.com">
         PhoneGap Team
