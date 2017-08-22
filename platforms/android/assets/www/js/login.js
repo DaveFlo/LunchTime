@@ -5,10 +5,13 @@ var user="";
     var school="";
     var ban = false;
     function login(){
+    	var form = new FormData($("#logForm")[0]);
+    	
+    	form.append("regID",localStorage.getItem('registrationId'));
     	$.ajax({
 	url: "http://www.icone-solutions.com/tlunch/sqlOP.php",
 	type: "POST",
-	data: new FormData($("#logForm")[0]),
+	data: form,
 	contentType: false,
 	cache: false,
 	processData:false,

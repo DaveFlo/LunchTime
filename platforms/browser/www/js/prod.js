@@ -242,20 +242,18 @@ $(document).ready(function(){
     	$("#conOrder").prop("disabled",false);
 
     }
-   Conekta.setPublicKey('key_L7Psm9dyS6CdPoozJGB6fdQ');
-   Conekta.setLanguage("es");  
-  var conektaSuccessResponseHandler = function(token) {
+    
+  function payOrder( ){
   	var $form = $("#payForm");
   	var content = new FormData($("#payForm")[0]);
-  	content.append("conektaTokenId",token.id);
+  	content.append("user",localStorage.getItem("user"));
   	content.append("prods",localStorage.getItem("prods"));
   	content.append("precios",localStorage.getItem("prices"));
   	content.append("cants",localStorage.getItem("cants"));
   	content.append("escuela",localStorage.getItem("school"));
-  	console.log(localStorage.getItem('registrationId'));
   	content.append("regID",localStorage.getItem('registrationId'));
   	
-     var tid =  token.id;
+     
   	 $.ajax({
 	 url: "http://www.icone-solutions.com/tlunch/conekta.php",
 	 type: "POST",
@@ -290,10 +288,7 @@ $(document).ready(function(){
     //Inserta el token_id en la forma para que se envíe al servidor
     //
   };
-  var conektaErrorResponseHandler = function(response) {
-
-  swal(response.message_to_purchaser);
-  };
+ 
   $("#conOrder").click(function(){
   
   	$.mobile.navigate( "#pagos", {transition:"turn" });
@@ -313,7 +308,7 @@ $(document).ready(function(){
   cancelButtonText: "Cancelar",
 },
 function(){
- 	Conekta.Token.create($form, conektaSuccessResponseHandler, conektaErrorResponseHandler);
+ 	payOrder();
 });
   
   });
