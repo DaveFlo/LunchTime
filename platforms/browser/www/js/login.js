@@ -23,10 +23,12 @@ var user="";
 	    	user = datos[0];
 	    	school = datos[1];
 	    	credit = datos[2];
+	    	nombre = datos[3];
 	    	localStorage.setItem("user",user);
+	    	localStorage.setItem("nombre",nombre);
             localStorage.setItem("school",school);
             localStorage.setItem("credit",credit);
-            $(".usuario").text(localStorage.getItem("user"));
+            $(".usuario").text(localStorage.getItem("nombre"));
             
 	    	$.mobile.navigate( "#inicio", { transition : "slide",info: "info about the #foo hash" });
 
@@ -53,15 +55,9 @@ var user="";
 	async: false,
 	success: function(data){
 		$(".loads").hide();
-	    if(data.toString()!=="0"){
+	    if(data.toString()=="0"){
 	    	var datos = data.toString().split(",");
-	    	user = datos[0];
-	    	school = datos[1];
-	    	credit = datos[2];
-	    	localStorage.setItem("user",user);
-            localStorage.setItem("school",school);
-            localStorage.setItem("credit",credit);
-            $(".usuario").text(localStorage.getItem("user"));
+	    	
             swal("Listo","Tu usuario ha sido registrado exitosamente.","success");
 	    	$.mobile.navigate( "#login", { transition : "slide",info: "info about the #foo hash" });
 

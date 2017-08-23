@@ -19,7 +19,31 @@ $(document).ready(function(){
         navigator.app.backHistory()
           }
          }, false);
-         
+    function getOrders(){
+    	$("#orderlist").html("");
+    var client = localStorage.getItem("user");
+	$.ajax({
+	url: "http://www.icone-solutions.com/tlunch/sqlOP.php",
+	type: "POST",
+	data: {orders: 1,client: client},
+	
+	success: function(data){
+        
+		var jsonObj = jQuery.parseJSON(data);
+		var productos = jsonObj[1].split("-");
+		var tiempo = jsonObj[0].split(",");
+		var total = jsonObj[2].split(",");
+		var id = jsonObj[3].split(",");
+		if(productos[0]!=""){
+			$("#orderlist").append('<li><p class="tname">Productos <span class="pricet">Tiempo estimado</span> <span class="pricet">Total</span></p></li>');
+		for(var i=0;i<tiempo.length;i++){
+			$("#orderlist").append('<li><p class="pname">'+productos[i]+' </p><a id="'+id[i]+'" class="atimes" href=""><i class="fa fa-times "></i></a><span class="price">'+tiempo[i]+'</span> <span class="price">$'+total[i]+'</span></li>');
+		}
+       }
+    }
+   
+    });
+    }
     function getComida(){
     	
 	$.ajax({
@@ -106,7 +130,7 @@ $(document).ready(function(){
     }
     $(".addButton").click(function(){
     	//$("#pedidoL").append('<li><p class="pname">'+text[0]+' <span class="price">$'+text[1]+'</span></p> </li>');
-    	console.log($(this).children("span").text());
+    	
         if($(this).children("span").text()!=="$0.00"){
         	
 
@@ -233,6 +257,26 @@ $(document).ready(function(){
     	$add.children().children().text("$"+total.toFixed(2));
     	}
     });
+    $("#orderlist").on('click', '.atimes', function(e) {
+    	var elm = $(this).attr("id");
+    	swal({
+  title: "¿Está seguro de cancelar este pedido?",
+  text: "Recuerde que puede haber multas por cancelación de pedido.",
+  type: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#DD6B55",
+  confirmButtonText: "Aceptar",
+  showLoaderOnConfirm: true,
+  closeOnConfirm: false,
+  cancelButtonText: "Cancelar",
+},
+function(isConfirm){
+	if(isConfirm){
+ 	canOrder(elm);
+ }
+});
+    	
+    });
     if(localStorage.getItem("prods")!=null){
     
      addToCart();
@@ -257,7 +301,25 @@ $(document).ready(function(){
     	$("#conOrder").prop("disabled",false);
 
     }
+    function canOrder(elm){
+    	 $.ajax({
+	 url: "http://www.icone-solutions.com/tlunch/sqlOP.php",
+	 type: "POST",
+	 data: {cancel:elm},
     
+	 success: function(data){
+	 	console.log(data);
+	 	if(data.toString()!=="0"){
+	 		getOrders();
+	 		swal("Listo","Tu orden ha sido cancelada. Tu penalización fue de: $"+data.toString(),"success");
+	 	}else{
+	 		swal("Error","Ocurrió un error al cancelar tu orden, porfavor intentalo de nuevo.","error");
+	 	}
+    }
+    	
+  });
+    }
+    $("#payOrder").prop("disabled",true);
   function payOrder( ){
   	var $form = $("#payForm");
   	var content = new FormData($("#payForm")[0]);
@@ -266,8 +328,7 @@ $(document).ready(function(){
   	content.append("precios",localStorage.getItem("prices"));
   	content.append("cants",localStorage.getItem("cants"));
   	content.append("escuela",localStorage.getItem("school"));
-  	
-     
+  	content.append("coments",$("#comentarios").val());
   	 $.ajax({
 	 url: "http://www.icone-solutions.com/tlunch/conekta.php",
 	 type: "POST",
@@ -281,7 +342,7 @@ $(document).ready(function(){
 
 		
 	    if(data.toString()=="0"){
-	      
+	      getOrders();
     	  swal("Listo","Tu pago ha sido realizado con éxito y tu orden comenzará a prepararse","success");
             localStorage.removeItem("prods");
             localStorage.removeItem("prices");
@@ -322,8 +383,10 @@ $(document).ready(function(){
   closeOnConfirm: false,
   cancelButtonText: "Cancelar",
 },
-function(){
+function(isConfirm){
+	if(isConfirm){
  	payOrder();
+ }
 });
   
   });
@@ -340,10 +403,12 @@ function(){
 
       // STARTS and Resets the loop if any
  function getAllF(){
+ 	$("#orderlist").html("");
  	$("#comlist").html("");
  	$("#beblist").html("");
  	$("#poslist").html("");
  	$("#varlist").html("");
+ 	getOrders();
  	getComida();
  	getBebidas();
  	getPostres();

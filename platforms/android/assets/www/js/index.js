@@ -2,9 +2,9 @@
 $(document).ready(function(){
 
 
-   $(".usuario").text(localStorage.getItem("user"));
+   $(".usuario").text(localStorage.getItem("nombre"));
 
-
+$(".credit").text("$"+localStorage.getItem("credit"));
    
                        
 

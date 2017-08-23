@@ -98,7 +98,13 @@ body {
 	margin-top:-1px;
 	float: right;
 }
-.aplus,.aminus{
+.pricet{
+	margin-right:8px;
+	margin-top:-1px;
+	float: right;
+	color: orange;
+}
+.aplus,.aminus,.atimes{
 	margin-top:-5px;
 	border: 1px solid orange;
 	padding: 3px 5px;
@@ -111,7 +117,7 @@ body {
 	
 	float: right;
 }
-.aplus:hover, .aminus:hover{
+.aplus:hover, .aminus:hover, .atimes:hover{
 	border: 1px solid #fff;
 	color: #fff !important;
 }
@@ -126,6 +132,22 @@ body {
     -o-transform: skewX(-2.5deg)   rotate(-3deg);  ;
     transform: skewX(-2.5deg)  rotate(-3deg);  ;
     -webkit-transform-origin: 0 0; /* Chrome, Safari, Opera */
+}
+
+.areacon{
+	padding: 0 15px;
+	margin-bottom: 60px;
+}
+#comentarios{
+	resize:none;
+	height:220px !important;
+	 -webkit-transform: skewX(2.5deg) rotate(3deg);  ;
+    -khtml-transform: skewX(2.5deg)  rotate(3deg);  ;
+    -moz-transform: skewX(2.5deg)   rotate(3deg);  ;
+    -ms-transform: skewX(2.5deg) rotate(3deg);  ;
+    -o-transform: skewX(2.5deg)   rotate(3deg);  ;
+    transform: skewX(2.5deg)  rotate(3deg);  ;
+    -webkit-transform-origin: 0 0;
 }
 .fixAdd{
 	width:100%;
@@ -170,6 +192,10 @@ body {
 .headt h1{
 	color: orange;
 	font-weight:bolder;
+}
+.tname{
+	color: orange;
+	text-transform: uppercase;
 }
 .innerl ul{
 	
@@ -263,7 +289,7 @@ body {
 	margin-top:12px;
 	text-transform:none;
 	color: #fff;
-	font-size:10px;
+	font-size:14px;
 	 -webkit-transform: skewX(10.5deg) rotate(3deg);  ;
     -khtml-transform: skewX(10.5deg) rotate(3deg);  ;
     -moz-transform: skewX(10.5deg)  rotate(3deg); ;
