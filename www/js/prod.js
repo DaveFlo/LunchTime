@@ -265,7 +265,6 @@ $(document).ready(function(){
   	content.append("precios",localStorage.getItem("prices"));
   	content.append("cants",localStorage.getItem("cants"));
   	content.append("escuela",localStorage.getItem("school"));
-  	content.append("regID",localStorage.getItem('registrationId'));
   	
      
   	 $.ajax({
