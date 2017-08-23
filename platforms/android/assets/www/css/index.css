@@ -35,6 +35,11 @@ body {
     text-transform:uppercase;
     width:100%;
 }
+.credit,.crediT{
+	font-size:16px;
+	font-weight:bolder;
+	text-align: center;
+}
 .cardd{
 	display: flex;
 }

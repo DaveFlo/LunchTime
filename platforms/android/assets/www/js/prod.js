@@ -19,6 +19,9 @@ $(document).ready(function(){
         navigator.app.backHistory()
           }
          }, false);
+         
+    function getComida(){
+    	
 	$.ajax({
 	url: "http://www.icone-solutions.com/tlunch/sqlOP.php",
 	type: "POST",
@@ -29,32 +32,37 @@ $(document).ready(function(){
 		var jsonObj = jQuery.parseJSON(data);
 		var nombres = jsonObj[0].split(",");
 		var precios = jsonObj[1].split(",");
+		if(nombres[0]!=""){
 		for(var i=0;i<nombres.length;i++){
 			$("#comlist").append('<li><p class="pname">'+nombres[i]+' <a class="aplus" href=""><i class="fa fa-plus "></i></a><span class="cants">0</span><a class="aminus" href=""><i class="fa fa-minus"></i></a><span class="price">$'+precios[i]+'</span></p> </li>');
 		}
-
+       }
     }
    
     });
-    
+    }
+    function getBebidas(){
     $.ajax({
 	url: "http://www.icone-solutions.com/tlunch/sqlOP.php",
 	type: "POST",
 	data: {bebida: 'bebida'},
 	
 	success: function(data){
-
+        
 		var jsonObj = jQuery.parseJSON(data);
 		var nombres = jsonObj[0].split(",");
 		var precios = jsonObj[1].split(",");
+		if(nombres[0]!=""){
 		for(var i=0;i<nombres.length;i++){
 			$("#beblist").append('<li><p class="pname">'+nombres[i]+' <a class="aplus" href=""><i class="fa fa-plus "></i></a><span class="cants">0</span><a class="aminus" href=""><i class="fa fa-minus"></i></a><span class="price">$'+precios[i]+'</span></p> </li>');
+		}
 		}
 
     }
    
     });
-    
+    }
+    function getPostres(){
     $.ajax({
 	url: "http://www.icone-solutions.com/tlunch/sqlOP.php",
 	type: "POST",
@@ -65,14 +73,17 @@ $(document).ready(function(){
 		var jsonObj = jQuery.parseJSON(data);
 		var nombres = jsonObj[0].split(",");
 		var precios = jsonObj[1].split(",");
+		if(nombres[0]!=""){
 		for(var i=0;i<nombres.length;i++){
 			$("#poslist").append('<li><p class="pname">'+nombres[i]+' <a class="aplus" href=""><i class="fa fa-plus "></i></a><span class="cants">0</span><a class="aminus" href=""><i class="fa fa-minus"></i></a><span class="price">$'+precios[i]+'</span></p> </li>');
+		}
 		}
 
     }
    
     });
-    
+    }
+    function getVarios(){
     $.ajax({
 	url: "http://www.icone-solutions.com/tlunch/sqlOP.php",
 	type: "POST",
@@ -83,13 +94,16 @@ $(document).ready(function(){
 		var jsonObj = jQuery.parseJSON(data);
 		var nombres = jsonObj[0].split(",");
 		var precios = jsonObj[1].split(",");
+		if(nombres[0]!=""){
 		for(var i=0;i<nombres.length;i++){
 			$("#varlist").append('<li><p class="pname">'+nombres[i]+' <a class="aplus" href=""><i class="fa fa-plus"></i></a><span class="cants">0</span><a class="aminus" href=""><i class="fa fa-minus"></i></a><span class="price">$'+precios[i]+'</span></p> </li>');
+		}
 		}
 
     }
    
     });
+    }
     $(".addButton").click(function(){
     	//$("#pedidoL").append('<li><p class="pname">'+text[0]+' <span class="price">$'+text[1]+'</span></p> </li>');
     	console.log($(this).children("span").text());
@@ -263,7 +277,7 @@ $(document).ready(function(){
 	 data: content,
     
 	 success: function(data){
-		console.log(data);
+		
 
 		
 	    if(data.toString()=="0"){
@@ -275,7 +289,8 @@ $(document).ready(function(){
             $("#pedidoL").html("");
             $("#pedidoL").append('<li><p class="pname">Resumen de orden <span id="totalT" class="price"></span></p> </li>');
             $("#total").html("");
-            $("#conOrder").prop("disabled",true);
+            $("#payOrder").prop("disabled",true);
+            $.mobile.navigate( "#inicio", { transition : "slide",info: "info about the #foo hash" });
 	    }else{
 	    	swal("Error",data.toString(),"error");
 	    }
@@ -298,7 +313,7 @@ $(document).ready(function(){
   	$form = $("#payForm");
   	swal({
   title: "¿Estas seguro que deseas realizar esta compra?",
-  text: "Una vez que hayas aceptado se hara el cargo a tu tarjeta",
+  text: "Una vez que hayas aceptado se usara el dinero de tu cuenta.",
   type: "info",
   showCancelButton: true,
   confirmButtonColor: "#DD6B55",
@@ -319,5 +334,29 @@ function(){
   $("#expmonth").inputmask("m");
   $("#card").inputmask("9999 9999 9999 9999", {"placeholder": "0000 0000 0000 0000"});
   $("#cvv").inputmask("999", {"placeholder": "000"});
-          
+         
+      var iFrequency = 60000; // expressed in miliseconds
+      var myInterval = 0;
+
+      // STARTS and Resets the loop if any
+ function getAllF(){
+ 	$("#comlist").html("");
+ 	$("#beblist").html("");
+ 	$("#poslist").html("");
+ 	$("#varlist").html("");
+ 	getComida();
+ 	getBebidas();
+ 	getPostres();
+ 	getVarios();
+	}
+	getAllF();
+function startLoop() {
+    
+    myInterval = setInterval( getAllF, iFrequency ); 
+ 
+}
+
+
+
+startLoop(); 
 });
