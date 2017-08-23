@@ -59,9 +59,7 @@
 .ui-icon-camera:after {
 	background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22iso-8859-1%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20width%3D%2214px%22%20height%3D%2214px%22%20viewBox%3D%220%200%2014%2014%22%20style%3D%22enable-background%3Anew%200%200%2014%2014%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20style%3D%22fill%3A%23FFFFFF%3B%22%20d%3D%22M12%2C2.5H9.908c-0.206-0.581-0.756-1-1.408-1h-3c-0.652%2C0-1.202%2C0.419-1.408%2C1H2c-1.104%2C0-2%2C0.896-2%2C2%20v6c0%2C1.104%2C0.896%2C2%2C2%2C2h10c1.104%2C0%2C2-0.896%2C2-2v-6C14%2C3.396%2C13.104%2C2.5%2C12%2C2.5z%20M7%2C10.5c-1.657%2C0-3-1.344-3-3c0-1.657%2C1.343-3%2C3-3%20s3%2C1.343%2C3%2C3C10%2C9.156%2C8.657%2C10.5%2C7%2C10.5z%20M7%2C5.5c-1.104%2C0-2%2C0.896-2%2C2c0%2C1.104%2C0.896%2C2%2C2%2C2c1.104%2C0%2C2-0.896%2C2-2%20C9%2C6.396%2C8.104%2C5.5%2C7%2C5.5z%22%2F%3E%3C%2Fsvg%3E");
 }
-.ui-icon-carat-d:after {
-	background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22iso-8859-1%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20width%3D%2214px%22%20height%3D%2214px%22%20viewBox%3D%220%200%2014%2014%22%20style%3D%22enable-background%3Anew%200%200%2014%2014%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpolygon%20style%3D%22fill%3A%23FFFFFF%3B%22%20points%3D%2211.949%2C3.404%207%2C8.354%202.05%2C3.404%20-0.071%2C5.525%207%2C12.596%2014.07%2C5.525%20%22%2F%3E%3C%2Fsvg%3E");
-}
+
 .ui-icon-carat-l:after {
 	background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22iso-8859-1%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20width%3D%2214px%22%20height%3D%2214px%22%20viewBox%3D%220%200%2014%2014%22%20style%3D%22enable-background%3Anew%200%200%2014%2014%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpolygon%20style%3D%22fill%3A%23FFFFFF%3B%22%20points%3D%2210.596%2C11.949%205.646%2C7%2010.596%2C2.05%208.475%2C-0.071%201.404%2C7%208.475%2C14.07%20%22%2F%3E%3C%2Fsvg%3E");
 }
@@ -1246,7 +1244,7 @@ html head + body .ui-body-b.ui-focus {
 .ui-disabled,
 .ui-state-disabled,
 button[disabled],
-.ui-select .ui-btn.ui-state-disabled {
+ {
 	filter: Alpha(Opacity=30);
 	opacity: .3;
 	cursor: default !important;
@@ -2566,7 +2564,6 @@ li.ui-block-e {
 	margin-left: 0;
 }
 [class*="ui-block-"] > .ui-btn,
-[class*="ui-block-"] > .ui-select,
 [class*="ui-block-"] > .ui-checkbox,
 [class*="ui-block-"] > .ui-radio,
 [class*="ui-block-"] > button.ui-btn-inline,
@@ -3405,81 +3402,20 @@ fieldset.ui-controlgroup {
 	overflow: hidden;
 	clip: rect(1px,1px,1px,1px);
 }
-.ui-select {
-	margin-top: .5em;
-	margin-bottom: .5em; /* no shorthand for margin because it would override margin-right for inline selects */
-	position: relative;
-}
-.ui-select > select {
-	position: absolute !important;
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
-	clip: rect(1px,1px,1px,1px);
-}
+
+
 .ui-select .ui-btn {
 	margin: 0;
 	opacity: 1; /* Fixes #2588: When Windows Phone 7.5 (Mango) tries to calculate a numeric opacity for a select (including "inherit") without explicitly specifying an opacity on the parent to give it context, a bug appears where clicking elsewhere on the page after opening the select will open the select again. */
 }
-.ui-select .ui-btn select {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	min-height: 1.5em;
-	min-height: 100%;
-	height: 3em;
-	max-height: 100%;
-	outline: 0;
-	-webkit-border-radius: inherit;
-	border-radius: inherit;	
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	cursor: pointer;
-	filter: Alpha(Opacity=0);
-	opacity: 0;
-	z-index: 2;
-}
-@-moz-document url-prefix() {
-	.ui-select .ui-btn select {
-		opacity: 0.0001;
-	}
-}
+
+
 /* Display none because of issues with IE/WP's filter alpha opacity */
-.ui-select .ui-state-disabled select {
-	display: none;
-}
+
 /* Because we add all classes of the select and option elements to the span... */ 
-.ui-select span.ui-state-disabled {
-	filter: Alpha(Opacity=100);
-	opacity: 1;
-}
-.ui-select .ui-btn.ui-select-nativeonly {
-	border-radius: 0;
-	border: 0;
-}
-.ui-select .ui-btn.ui-select-nativeonly select {
-	opacity: 1;
-	text-indent: 0;
-	display: block;
-}
-/* ui-li-count is styled in the listview CSS. We set padding and offset here because select supports icon position while listview doesn't. */
-.ui-select .ui-li-has-count.ui-btn {
-	padding-right: 2.8125em;
-}
-.ui-select .ui-li-has-count.ui-btn-icon-right {
-	padding-right: 4.6875em;
-}
-.ui-select .ui-btn-icon-right .ui-li-count {
-	right: 3.2em;
-}
+
 /* We set the rules for the span as well to fix an issue on Chrome with text-overflow ellipsis for the button in combination with text-align center. */
-.ui-select .ui-btn > span:not(.ui-li-count) {
-	display: block;
-	text-overflow: ellipsis;
-	overflow: hidden !important;
-	white-space: nowrap;
-}
+
 .ui-selectmenu.ui-popup {
 	min-width: 11em;
 }

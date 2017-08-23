@@ -143,6 +143,7 @@ $(document).ready(function(){
         $(this).children().text("$0.00");
     	swal("Listo","Se agrego tu orden al carrito","success");
         $("#pedidoL").html("");
+        $("#payOrder").prop("disabled",false);
     	 addToCart();
     	         }else{
     	         	swal("Sin productos","Debes escoger los productos que deseas agregar a tu orden","info");

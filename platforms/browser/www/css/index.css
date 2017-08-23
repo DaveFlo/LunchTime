@@ -342,6 +342,30 @@ body {
 	background: #ccc !important;
 	border-radius: 3px !important;
 }
+#schoolList{
+	width: 300px !important;
+	display: table !important;
+	margin: auto !important;
+	background: #ccc !important;
+	border-radius: 3px !important;
+	padding: 5px 0;
+}
+#schoolList-button.ui-btn.ui-icon-carat-d.ui-btn-icon-right.ui-corner-all.ui-shadow{
+	border:none;
+	box-shadow: none;
+	padding-right: 0;
+	padding-left: 0;
+}
+#schoolList-button > span{
+	display: none;
+}
+.inputF{
+	width: 300px !important;
+	display: table !important;
+	margin: auto !important;
+	background: #ccc !important;
+	border-radius: 3px !important;
+}
 .labelF{
 	text-transform:none !important;
 	display: table !important;
@@ -351,6 +375,7 @@ body {
 .loga{
 	padding-top:15px !important;
 	font-size:18px;
+	text-decoration: none;
 	text-transform:none !important;
 	display: table !important;
 	margin: auto !important;
