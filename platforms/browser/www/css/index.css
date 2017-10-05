@@ -104,7 +104,7 @@ body {
 	float: right;
 	color: orange;
 }
-.aplus,.aminus,.atimes{
+.aplus,.aminus,.atimes,.showi{
 	margin-top:-5px;
 	border: 1px solid orange;
 	padding: 3px 5px;
@@ -125,12 +125,12 @@ body {
 	
 	margin-top:-4px;
 	background: rgba(0,0,0,0.6);
-	 -webkit-transform: skewX(-2.5deg) rotate(-3deg);  ;
-    -khtml-transform: skewX(-2.5deg)  rotate(-3deg);  ;
-    -moz-transform: skewX(-2.5deg)   rotate(-3deg);  ;
-    -ms-transform: skewX(-2.5deg) rotate(-3deg);  ;
-    -o-transform: skewX(-2.5deg)   rotate(-3deg);  ;
-    transform: skewX(-2.5deg)  rotate(-3deg);  ;
+	 -webkit-transform: skewX(-2.5deg) rotate(-2.5deg);  ;
+    -khtml-transform: skewX(-2.5deg)  rotate(-2.5deg);  ;
+    -moz-transform: skewX(-2.5deg)   rotate(-2.5deg);  ;
+    -ms-transform: skewX(-2.5deg) rotate(-2.5deg);  ;
+    -o-transform: skewX(-2.5deg)   rotate(-2.5deg);  ;
+    transform: skewX(-2.5deg)  rotate(-2.5deg);  ;
     -webkit-transform-origin: 0 0; /* Chrome, Safari, Opera */
 }
 
@@ -200,12 +200,12 @@ body {
 .innerl ul{
 	
 	padding: 10px 25px;
-	 -webkit-transform: skewX(2.5deg) rotate(3deg);  ;
-    -khtml-transform: skewX(2.5deg) rotate(3deg);  ;
-    -moz-transform: skewX(2.5deg)  rotate(3deg);  ;
-    -ms-transform: skewX(2.5deg)  rotate(3deg);  ;
-    -o-transform: skewX(2.5deg)  rotate(3deg);  ;
-    transform: skewX(2.5deg) rotate(3deg);  ;
+	 -webkit-transform: skewX(2.5deg) rotate(2.5deg);  ;
+    -khtml-transform: skewX(2.5deg) rotate(2.5deg);  ;
+    -moz-transform: skewX(2.5deg)  rotate(2.5deg);  ;
+    -ms-transform: skewX(2.5deg)  rotate(2.5deg);  ;
+    -o-transform: skewX(2.5deg)  rotate(2.5deg);  ;
+    transform: skewX(2.5deg) rotate(2.5deg);  ;
     -webkit-transform-origin: 0 0; /* Chrome, Safari, Opera */
 	
 }
@@ -220,6 +220,25 @@ body {
     transform: skewX(2.5deg) rotate(3deg);  ;
     -webkit-transform-origin: 0 0; /* Chrome, Safari, Opera */
 	
+}
+.innerDiv{
+	
+	padding: 10px 25px;
+	 -webkit-transform: skewX(2.5deg) rotate(3deg);  ;
+    -khtml-transform: skewX(2.5deg) rotate(3deg);  ;
+    -moz-transform: skewX(2.5deg)  rotate(3deg);  ;
+    -ms-transform: skewX(2.5deg)  rotate(3deg);  ;
+    -o-transform: skewX(2.5deg)  rotate(3deg);  ;
+    transform: skewX(2.5deg) rotate(3deg);  ;
+    -webkit-transform-origin: 0 0; /* Chrome, Safari, Opera */
+	
+}
+.innerDiv h1{
+	color: orange;
+	font-weight: bolder;
+}
+.innerDiv p{
+	color: #fff;
 }
 #payForm input{
 	background: #fff;
@@ -299,7 +318,7 @@ body {
     -webkit-transform-origin: 0 0; /* Chrome, Safari, Opera */
 	
 }
-#bebidas,#varios,#postres{
+.menusecs{
 	margin-top: -50px;
 }
 #mess{
@@ -368,6 +387,46 @@ body {
 	background: #ccc !important;
 	border-radius: 3px !important;
 }
+.ui-selectmenu .ui-header .ui-title {
+    margin: 5px 2.875em;
+}
+.ui-select a{
+	border: none;
+	color: #fff;
+	background: orange;
+}
+.ui-icon-delete{
+	border:none;
+}
+.ui-select a:hover{
+	color: #fff;
+	
+}
+.ui-btn.ui-checkbox-off.ui-btn-icon-right{
+	border:none;
+	color: #fff;
+	
+}
+.ui-btn.ui-checkbox-on.ui-btn-icon-right{
+	border: 1px solid orange;
+	color: orange;
+}
+.innerDiv > .pname{
+	font-size: 16px;
+	
+}
+.iname{
+	 overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 170px;
+}
+#igds{
+	display: none;
+}
+#igds-listbox{
+	background: #000;
+}
 #schoolList{
 	width: 300px !important;
 	display: table !important;
@@ -384,6 +443,13 @@ body {
 }
 #schoolList-button > span{
 	display: none;
+}
+.ui-icon-delete:after{
+	background-repeat: no-repeat;
+	background-position:center;
+}
+.ui-icon-check:after, html .ui-btn.ui-checkbox-on.ui-checkbox-on:after{
+	background-repeat: no-repeat;
 }
 .inputF{
 	width: 300px !important;

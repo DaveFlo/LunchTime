@@ -1,5 +1,9 @@
 if(localStorage.getItem("user")!=null){
+	
     	$.mobile.navigate( "#inicio", {transition:"pop" });
+}
+if(localStorage.getItem("school")!=null){
+	getCategories();
 }
 var user="";
     var school="";
@@ -17,6 +21,7 @@ var user="";
 	processData:false,
 	async: false,
 	success: function(data){
+		
 		$(".loads").hide();
 	    if(data.toString()!=="0"){
 	    	var datos = data.toString().split(",");
@@ -29,7 +34,7 @@ var user="";
             localStorage.setItem("school",school);
             localStorage.setItem("credit",credit);
             $(".usuario").text(localStorage.getItem("nombre"));
-            
+            getCategories();
 	    	$.mobile.navigate( "#inicio", { transition : "slide",info: "info about the #foo hash" });
 
 
@@ -42,6 +47,30 @@ var user="";
 	}
 
         });
+    }
+    function getCategories(){
+    var esc = localStorage.getItem("school");
+	$.ajax({
+	url: "http://www.icone-solutions.com/tlunch/sqlOP.php",
+	type: "POST",
+	data: {cats: esc},
+	
+	success: function(data){
+		
+        $("#categories").empty();
+		var jsonObj = jQuery.parseJSON(data);
+		
+		for(var i=0;i<jsonObj.length;i++){
+			if(i==0){
+				$("#categories").append('<a  data-catg="'+jsonObj[i][0]+'" class="elm-cent gtsec"  ><img width="100%" src="img/'+jsonObj[i][1]+'" /></a>');
+			}else{
+			$("#categories").append('<a  data-catg="'+jsonObj[i][0]+'" class="elm-cent menusecs gtsec"  ><img width="100%" src="img/'+jsonObj[i][1]+'" /></a>');
+			}
+			}
+       
+    }
+   
+    });
     }
     function register(){
     	var form = new FormData($("#regForm")[0]);

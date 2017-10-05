@@ -2,11 +2,17 @@ $(document).ready(function(){
 	var prods =new Array();
     var prices =new Array();
     var cants =new Array();
+    var esps =new Array();
    
     $(document).on( "pagechange", function( event ) { 
     	prices =new Array();
     	prods =new Array();
     	cants =new Array();
+    	esps =new Array();
+    	if($.mobile.activePage.attr('id')=="pedidos"){
+    		getOrders();
+    	}
+    	
     	$(".fixAdd").children().children().text("$0.00");
     });
     document.addEventListener("backbutton", function(e){
@@ -44,90 +50,93 @@ $(document).ready(function(){
    
     });
     }
-    function getComida(){
+    function getFood(cat){
     	
 	$.ajax({
 	url: "http://www.icone-solutions.com/tlunch/sqlOP.php",
 	type: "POST",
-	data: {comida: 'comida'},
+	data: {foodc: cat},
 	
 	success: function(data){
-
+        $("#comlist").empty();
 		var jsonObj = jQuery.parseJSON(data);
-		var nombres = jsonObj[0].split(",");
-		var precios = jsonObj[1].split(",");
+		var nombres = jsonObj[0].split("_");
+		var precios = jsonObj[1].split("_");
+		var ids = jsonObj[2].split("_");
 		if(nombres[0]!=""){
 		for(var i=0;i<nombres.length;i++){
-			$("#comlist").append('<li><p class="pname">'+nombres[i]+' <a class="aplus" href=""><i class="fa fa-plus "></i></a><span class="cants">0</span><a class="aminus" href=""><i class="fa fa-minus"></i></a><span class="price">$'+precios[i]+'</span></p> </li>');
+			//$("#comlist").append('<li><p class="pname">'+nombres[i]+' <a class="aplus" href=""><i class="fa fa-plus "></i></a><span class="cants">0</span><a class="aminus" href=""><i class="fa fa-minus"></i></a><span class="price">$'+precios[i]+'</span></p> </li>');
+			$("#comlist").append('<li><p class="pname"><p class="iname">'+nombres[i]+'</p> <a class="showi" data-prod="'+ids[i]+'" href="" ><img width="20px" src="img/lista.png" /></a><span class="price">$'+precios[i]+'</span></p> </li>');
 		}
        }
+       $.mobile.navigate( "#comida", {transition:"slide" });
     }
    
     });
     }
-    function getBebidas(){
-    $.ajax({
+    
+    function getCategories(){
+    var esc = localStorage.getItem("school");
+	$.ajax({
 	url: "http://www.icone-solutions.com/tlunch/sqlOP.php",
 	type: "POST",
-	data: {bebida: 'bebida'},
+	data: {cats: esc},
 	
 	success: function(data){
-        
+		
+        $("#categories").empty();
 		var jsonObj = jQuery.parseJSON(data);
-		var nombres = jsonObj[0].split(",");
-		var precios = jsonObj[1].split(",");
-		if(nombres[0]!=""){
-		for(var i=0;i<nombres.length;i++){
-			$("#beblist").append('<li><p class="pname">'+nombres[i]+' <a class="aplus" href=""><i class="fa fa-plus "></i></a><span class="cants">0</span><a class="aminus" href=""><i class="fa fa-minus"></i></a><span class="price">$'+precios[i]+'</span></p> </li>');
+		
+		for(var i=0;i<jsonObj.length;i++){
+			if(i==0){
+				$("#categories").append('<a  data-catg="'+jsonObj[i][0]+'" class="elm-cent"  ><img width="100%" src="img/'+jsonObj[i][1]+'" /></a>');
+			}else{
+			$("#categories").append('<a  data-catg="'+jsonObj[i][0]+'" class="elm-cent menusecs"  ><img width="100%" src="img/'+jsonObj[i][1]+'" /></a>');
+			}
 		}
-		}
-
+       
     }
    
     });
     }
-    function getPostres(){
-    $.ajax({
+    $("#categories").on('click', '.gtsec', function(e) {
+    	
+    	var cat = $(this).data("catg");
+    	getFood(cat);
+    });
+    $("#comlist").on('click', '.showi', function(e) {
+    	var idp = $(this).data("prod");
+    	 $.ajax({
 	url: "http://www.icone-solutions.com/tlunch/sqlOP.php",
 	type: "POST",
-	data: {postres: 'postres'},
+	data: {idp: idp},
 	
 	success: function(data){
-
 		var jsonObj = jQuery.parseJSON(data);
-		var nombres = jsonObj[0].split(",");
-		var precios = jsonObj[1].split(",");
-		if(nombres[0]!=""){
-		for(var i=0;i<nombres.length;i++){
-			$("#poslist").append('<li><p class="pname">'+nombres[i]+' <a class="aplus" href=""><i class="fa fa-plus "></i></a><span class="cants">0</span><a class="aminus" href=""><i class="fa fa-minus"></i></a><span class="price">$'+precios[i]+'</span></p> </li>');
+		var options = jsonObj[3];
+		$("#igds").html("");
+		$("#igds").append('<option>Elije tus ingredientes</option>');
+		if(options.length>0){
+			$("#igds-button").show();
+			
+		for(var i =0;i<options.length;i++){
+			
+			$("#igds").append('<option value="'+options[i][0]+'">'+options[i][1]+'</option>');
 		}
+		}else{
+			$("#igds-button").hide();
 		}
-
-    }
-   
+		 $("#igds").selectmenu("refresh");
+       $(".innerDiv").find(".namepr").text(jsonObj[0]);
+       $(".innerDiv").find(".descpr").text("Descripción:");
+       
+       $(".innerDiv").find(".descpr").append("<br/>"+jsonObj[2]);
+       $(".innerDiv").find(".price").text("$"+jsonObj[1]);
+		
+  }
     });
-    }
-    function getVarios(){
-    $.ajax({
-	url: "http://www.icone-solutions.com/tlunch/sqlOP.php",
-	type: "POST",
-	data: {varios: 'varios'},
-	
-	success: function(data){
-
-		var jsonObj = jQuery.parseJSON(data);
-		var nombres = jsonObj[0].split(",");
-		var precios = jsonObj[1].split(",");
-		if(nombres[0]!=""){
-		for(var i=0;i<nombres.length;i++){
-			$("#varlist").append('<li><p class="pname">'+nombres[i]+' <a class="aplus" href=""><i class="fa fa-plus"></i></a><span class="cants">0</span><a class="aminus" href=""><i class="fa fa-minus"></i></a><span class="price">$'+precios[i]+'</span></p> </li>');
-		}
-		}
-
-    }
-   
+    	 $.mobile.navigate( "#prodi", { transition : "slideup",info: "info about the #foo hash" });
     });
-    }
     $(".addButton").click(function(){
     	//$("#pedidoL").append('<li><p class="pname">'+text[0]+' <span class="price">$'+text[1]+'</span></p> </li>');
     	
@@ -138,11 +147,13 @@ $(document).ready(function(){
         	localStorage.setItem("prices",JSON.stringify(prices));
     	    localStorage.setItem("prods",JSON.stringify(prods));
     	    localStorage.setItem("cants",JSON.stringify(cants));
+    	    localStorage.setItem("espf",JSON.stringify(esps));
         }else{
         
         var prices1 = JSON.parse(localStorage.getItem("prices"));
     	var prods1 = JSON.parse(localStorage.getItem("prods"));
     	var cants1 = JSON.parse(localStorage.getItem("cants"));
+    	var esps1 = JSON.parse(localStorage.getItem("espf"));
     	      for(var i=0;i<prices.length;i++){
     	      	
     	      	if(prods1.indexOf(prods[i])==-1){
@@ -150,17 +161,19 @@ $(document).ready(function(){
     		
     	           prices1.push(prices[i]);
     	           cants1.push(cants[i]);
-
+                   esps1.push(esps[i]);
     	        }else{
     		         prices1[prods1.indexOf(prods[i])] = parseFloat(prices1[prods1.indexOf(prods[i])])+parseFloat(prices[i]);
     		         cants1[prods1.indexOf(prods[i])] +=1;
-
+                     esps1[prods1.indexOf(prods[i])] = esps[i];
     	         }
     		       
     	      }
+    	      
     	      localStorage.setItem("prices",JSON.stringify(prices1));
     	      localStorage.setItem("prods",JSON.stringify(prods1));
     	      localStorage.setItem("cants",JSON.stringify(cants1));
+    	      localStorage.setItem("espf",JSON.stringify(esps1));
     	      
         }
         $(".cants").text("0");
@@ -168,9 +181,11 @@ $(document).ready(function(){
     	swal("Listo","Se agrego tu orden al carrito","success");
         $("#pedidoL").html("");
         $("#payOrder").prop("disabled",false);
+        
     	 addToCart();
     	         }else{
-    	         	swal("Sin productos","Debes escoger los productos que deseas agregar a tu orden","info");
+    	         	
+    	         	swal("Sin productos","Escoge la cantidad del producto que deseas agregar a tu orden","info");
     	         }
     	
     });
@@ -178,8 +193,26 @@ $(document).ready(function(){
       return this.clone().children(sel||">*").remove().end();
     };
    
-    $("#varlist,#comlist,#beblist,#poslist").on('click', '.aplus', function(e) {
-    	var name= $(this).parent().ignore("span").text();
+    $(".innerDiv").on('change', '.iselect', function(e) {
+    	var name= $(this).parent().parent().parent().find(".namepr").text();
+    	var text2= $(this).parent().parent().parent().find(".pname").find(".price").text().split("$");
+    	var val = $(this).val();
+    	val = val.toString();
+    	console.log(val);
+    	if(prods.indexOf(name)==-1){
+    		prods.push(name);
+    	    esps.push(val);
+    	    prices.push(text2[1]);
+    	    cants.push(0);
+    	
+    	}else{
+    		esps[prods.indexOf(name)] = val;
+    	}
+    });
+    
+    $(".innerDiv").on('click', '.aplus', function(e) {
+    	var name= $(this).parent().parent().find(".namepr").text();
+    	
     	var text2= $(this).parent().text().split("$");
     	var $cant= $(this).parent().find(".cants");
     	
@@ -189,42 +222,28 @@ $(document).ready(function(){
     	
     	if(prods.indexOf(name)==-1){
     		prods.push(name);
-    		
+    		esps.push("0");
     	    prices.push(text2[1]);
     	    cants.push(1);
     	   
     	
     	}else{
-    		prices[prods.indexOf(name)] = parseFloat(prices[prods.indexOf(name)])+parseFloat(text2[1]);
     		cants[prods.indexOf(name)] +=1;
     		
     		
     	}
     	
     	var total = 0;
-    	
     	for(var i=0; i<prices.length;i++){
     		
-    		total +=  parseFloat(prices[i]);
+    		total +=  parseFloat(prices[i])*cants[i];
     		
     	}
     	$add.children().children().text("$"+total.toFixed(2));
     	
-    	//$("#pedidoL").append('<li><p class="pname">'+text[0]+' <span class="price">$'+text[1]+'</span></p> </li>');
-    	
-    	/*if(localStorage.getItem("prods")==null){
-    		localStorage.setItem("prods",text[0]);
-    		localStorage.setItem("prices",text[1]);
-    		localStorage.setItem("cants",1);
-    	}else{
-    		localStorage.setItem("prods",localStorage.getItem("prods")+","+text[0]);
-    		localStorage.setItem("prices",localStorage.getItem("prices")+","+text[1]);
-    	}*/
-    	
-       //$("#total").trigger("contentchanged");
     });
-    $("#varlist,#comlist,#beblist,#poslist").on('click', '.aminus', function(e) {
-    	var name= $(this).parent().ignore("span").text();
+    $(".innerDiv").on('click', '.aminus', function(e) {
+    	var name= $(this).parent().parent().find(".namepr").text();
     	var text2= $(this).parent().text().split("$");
     	var $add = $(this).parent().parent().parent().parent().parent().parent().find(".fixAdd");
     	var $cant= $(this).parent().find(".cants");
@@ -236,21 +255,15 @@ $(document).ready(function(){
     	
     	if(prods.indexOf(name)!=-1){
     	
-    	 prices[prods.indexOf(name)] -= parseFloat(text2[1]);
+    	 
     	 cants[prods.indexOf(name)] -=1;
 
-    	 if(prices[prods.indexOf(name)]==0){
-    	    prices.splice(prods.indexOf(name),1);
-    	 	prods.splice(prods.indexOf(name),1);
-
-    	 	cants.splice(prods.indexOf(name),1);
-
-    	 }
+    	 
           
     	}
     	for(var i=0; i<prices.length;i++){
     		
-    		total = total +  parseFloat(prices[i]);
+    		total +=  parseFloat(prices[i])*cants[i];
     		
     	}
 
@@ -280,25 +293,28 @@ function(isConfirm){
     if(localStorage.getItem("prods")!=null){
     
      addToCart();
+    }else{
+    	$("#payOrder").prop("disabled",true);
     }
     function addToCart(){
-    	
+    	$("#payOrder").prop("disabled",false);
     	$("#total").html("");
-    	$("#pedidoL").html("")
+    	$("#pedidoL").html("");
     	var total = 0;
     	var tc = 0;
     	var prices1 =JSON.parse( localStorage.getItem("prices"));
     	var prods1 =JSON.parse( localStorage.getItem("prods"));
     	var cants1 =JSON.parse( localStorage.getItem("cants"));
+    	var esps1 =JSON.parse( localStorage.getItem("espf"));
     	$("#pedidoL").append('<li><p class="pname">Resumen de orden <span id="totalT" class="price"></span></p> </li>');
     	for(var i=0;i<prices1.length;i++){
             tc  = tc+parseInt(cants1[i]);
-    	    total = total + parseInt(prices1[i]);
+    	    total = total + parseInt(prices1[i]*cants1[i]);
     	    $("#pedidoL").append('<li><p class="pname">'+prods1[i]+' ('+cants1[i]+')<span class="price">$'+parseFloat(prices1[i]).toFixed(2)+'</span></p> </li>');
     	}
 
     	$("#total").append('<p>Total de orden ('+tc+' artículo(s))</p><h1 >$'+total+'</h1>');
-    	$("#conOrder").prop("disabled",false);
+    	
 
     }
     function canOrder(elm){
@@ -308,7 +324,6 @@ function(isConfirm){
 	 data: {cancel:elm},
     
 	 success: function(data){
-	 	console.log(data);
 	 	if(data.toString()!=="0"){
 	 		getOrders();
 	 		swal("Listo","Tu orden ha sido cancelada. Tu penalización fue de: $"+data.toString(),"success");
@@ -319,14 +334,16 @@ function(isConfirm){
     	
   });
     }
-    $("#payOrder").prop("disabled",true);
+    
   function payOrder( ){
   	var $form = $("#payForm");
+  	
   	var content = new FormData($("#payForm")[0]);
   	content.append("user",localStorage.getItem("user"));
   	content.append("prods",localStorage.getItem("prods"));
   	content.append("precios",localStorage.getItem("prices"));
   	content.append("cants",localStorage.getItem("cants"));
+  	content.append("espf",localStorage.getItem("espf"));
   	content.append("escuela",localStorage.getItem("school"));
   	content.append("coments",$("#comentarios").val());
   	 $.ajax({
@@ -339,7 +356,7 @@ function(isConfirm){
     
 	 success: function(data){
 		
-
+      console.log(data);
 		
 	    if(data.toString()=="0"){
 	      getOrders();
@@ -398,30 +415,14 @@ function(isConfirm){
   $("#card").inputmask("9999 9999 9999 9999", {"placeholder": "0000 0000 0000 0000"});
   $("#cvv").inputmask("999", {"placeholder": "000"});
          
-      var iFrequency = 60000; // expressed in miliseconds
-      var myInterval = 0;
+     
 
       // STARTS and Resets the loop if any
  function getAllF(){
  	$("#orderlist").html("");
- 	$("#comlist").html("");
- 	$("#beblist").html("");
- 	$("#poslist").html("");
- 	$("#varlist").html("");
  	getOrders();
- 	getComida();
- 	getBebidas();
- 	getPostres();
- 	getVarios();
+ 	
 	}
 	getAllF();
-function startLoop() {
-    
-    myInterval = setInterval( getAllF, iFrequency ); 
- 
-}
 
-
-
-startLoop(); 
 });

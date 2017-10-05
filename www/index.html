@@ -118,12 +118,9 @@
           <img class="logoi elm-cent" width="170px"  src="img/menub.png" />
           <a href="#carrito" data-transition="slideup" class="cart" ></a> 
     </div>
-    <div data-role="main" class="ui-content">
+    <div id="categories" data-role="main" class="ui-content">
     
-    <a href="#comida"  class="elm-cent" data-transition="slide" ><img width="100%" src="img/food.png" /></a>
- 	<a href="#bebidasp" id="bebidas" class="elm-cent" data-transition="slide" ><img width="100%" src="img/bebidas.png" /></a>
- 	<a href="#postresp" id="postres" class="elm-cent" data-transition="slide" ><img width="100%" src="img/dessert.png" /></a>
- 	  <a href="#variosp" id="varios" class="elm-cent" data-transition="slide" ><img width="100%" src="img/varios.png" /></a>
+    
  	
  	</div>
     <div data-role="popup" id="popd" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
@@ -179,9 +176,7 @@
     		<br /><br />
     	</div>
     </div>
-    <div id="addCom" class="fixAdd">
- 		<button class="addButton">Añadir al Carrito <span>$0.00</span></button>
- 	</div>
+    
  	
  	</div>
  	<div data-role="popup" id="popdc" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
@@ -195,165 +190,10 @@
          </div>
        </div>
  </div>
- <div data-role="page" id="bebidasp">
-	<div data-role="panel" id="panelp3">
-      	<img src="img/logob.png" class="elm-cent" width="120px" /><br />
-      	<img src="img/cuenta.png" class="elm-cent" width="120px" /><br />
-      	<div class="datos elm-cent">
-      		<img src="img/user.png" class="useri" />
-      		<div>
-      		<p class="usuario">correo@electronico.com</p>
-      		</div>
-      	</div>
-        <p class="crediT">Crédito Disponible:</p>
-        <p class="credit">$0.00</p>
-      	<br />
-       <ul data-role="listview">
-        <li class="menitem" data-icon="false"><a href="#inicio" data-transition="slide">Menú</a></li>
-        <li class="menitem" data-icon="false"><a href="#pedidos" data-transition="slideup">Pedidos</a></li>
-        <li class="menitem" data-icon="false"><a href="#ayuda" data-transition="slide">Ayuda</a></li>
-        <li class="menitem" data-icon="false"><a href="#notificaciones" data-transition="slide">Notificaciones</a></li>
-        <li class="menitem" data-icon="false"><a href="#popdb" data-rel="popup" data-position-to="window" data-transition="pop" >Cerrar Sesión</a></li>
-      
-      </ul>
-     </div>
-      <div data-role="header" class="headerb">
-          <a href="#panelp3" id="menbu" class="menub ui-btn ui-icon-home ui-btn-icon-left" ></a>
-          <img class="logoi elm-cent" width="170px"  src="img/comida.png" />
-          <a href="#carrito" data-transition="slideup" class="cart" ></a> 
-    </div>
-  <div data-role="main" class="ui-content">
-    <div class="lback">
-    	<!--<img src="img/bannerc.png"  width="100%" height="250px"/>-->
-    	<div class="innerl">
-    		<ul id="beblist">
-    			
-    		</ul>
-    		<br /><br />
-    	</div>
-    </div>
-    <div id="addBeb" class="fixAdd">
- 		<button>Añadir al Carrito <span>$0.00</span></button>
- 	</div>
- 	
- 	</div>
- 	<div data-role="popup" id="popdb" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
-    <div data-role="header" data-theme="a">
-    <h1>Cerrar sesión</h1>
-    </div>
-       <div role="main" class="ui-content">
-        <h3 class="ui-title">¿Esta seguro que desea salir?</h3>
-        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Cancelar</a>
-        <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b close"  data-transition="flow">Salir</a>
-         </div>
-       </div>
- </div>
- <div data-role="page" id="postresp">
-	<div data-role="panel" id="panelp4">
-      	<img src="img/logob.png" class="elm-cent" width="120px" /><br />
-      	<img src="img/cuenta.png" class="elm-cent" width="120px" /><br />
-      	<div class="datos elm-cent">
-      		<img src="img/user.png" class="useri" />
-      		<div>
-      		<p class="usuario">correo@electronico.com</p>
-      		</div>
-      	</div>
-      <p class="crediT">Crédito Disponible:</p>
-        <p class="credit">$0.00</p>
-      	<br />
-       <ul data-role="listview">
-        <li class="menitem" data-icon="false"><a href="#inicio" data-transition="slide">Menú</a></li>
-        <li class="menitem" data-icon="false"><a href="#pedidos" data-transition="slideup">Pedidos</a></li>
-        <li class="menitem" data-icon="false"><a href="#ayuda" data-transition="slide">Ayuda</a></li>
-        <li class="menitem" data-icon="false"><a href="#notificaciones" data-transition="slide">Notificaciones</a></li>
-        <li class="menitem" data-icon="false"><a href="#popdp" data-rel="popup" data-position-to="window" data-transition="pop" >Cerrar Sesión</a></li>
-      
-      </ul>
-     </div>
-      <div data-role="header" class="headerb">
-          <a href="#panelp4" id="menbu" class="menub ui-btn ui-icon-home ui-btn-icon-left" ></a>
-          <img class="logoi elm-cent" width="170px"  src="img/comida.png" />
-          <a href="#carrito" data-transition="slideup" class="cart" ></a> 
-    </div>
-  <div data-role="main" class="ui-content">
-    <div class="lback">
-    	<!--<img src="img/bannerc.png"  width="100%" height="250px"/>-->
-    	<div class="innerl">
-    		<ul id="poslist">
-    			
-    		</ul>
-    		<br /><br />
-    	</div>
-    </div>
-    <div id="addPos" class="fixAdd">
- 		<button>Añadir al Carrito <span>$0.00</span></button>
- 	</div>
- 	
- 	</div>
- 	<div data-role="popup" id="popdp" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
-    <div data-role="header" data-theme="a">
-    <h1>Cerrar sesión</h1>
-    </div>
-       <div role="main" class="ui-content">
-        <h3 class="ui-title">¿Esta seguro que desea salir?</h3>
-        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Cancelar</a>
-        <a class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b close"  data-transition="flow">Salir</a>
-         </div>
-       </div>
- </div>
- <div data-role="page" id="variosp">
-	<div data-role="panel" id="panelp5">
-      	<img src="img/logob.png" class="elm-cent" width="120px" /><br />
-      	<img src="img/cuenta.png" class="elm-cent" width="120px" /><br />
-      	<div class="datos elm-cent">
-      		<img src="img/user.png" class="useri" />
-      		<div>
-      		<p class="usuario">correo@electronico.com</p>
-      		</div>
-      	</div>
-      <p class="crediT">Crédito Disponible:</p>
-        <p class="credit">$0.00</p>
-      	<br />
-       <ul data-role="listview">
-        <li class="menitem" data-icon="false"><a href="#inicio" data-transition="slide">Menú</a></li>
-        <li class="menitem" data-icon="false"><a href="#pedidos" data-transition="slideup">Pedidos</a></li>
-        <li class="menitem" data-icon="false"><a href="#ayuda" data-transition="slide">Ayuda</a></li>
-        <li class="menitem" data-icon="false"><a href="#notificaciones" data-transition="slide">Notificaciones</a></li>
-        <li class="menitem" data-icon="false"><a href="#popdv" data-rel="popup" data-position-to="window" data-transition="pop" >Cerrar Sesión</a></li>
-      
-      </ul>
-     </div>
-      <div data-role="header" class="headerb">
-          <a href="#panelp5" id="menbu" class="menub ui-btn ui-icon-home ui-btn-icon-left" ></a>
-          <img class="logoi elm-cent" width="170px"  src="img/comida.png" />
-         <a href="#carrito" data-transition="slideup" class="cart" ></a> 
-    </div>
-  <div data-role="main" class="ui-content">
-    <div class="lback">
-    	<!--<img src="img/bannerc.png"  width="100%" height="250px"/>-->
-    	<div class="innerl">
-    		<ul id="varlist">
-    			
-    		</ul>
-    		<br /><br />
-    	</div>
-    </div>
-    <div id="addVar" class="fixAdd">
- 		<button>Añadir al Carrito <span>$0.00</span></button>
- 	</div>
- 	
- 	</div>
- 	<div data-role="popup" id="popdv" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
-    <div data-role="header" data-theme="a">
-    <h1>Cerrar sesión</h1>
-    </div>
-       <div role="main" class="ui-content">
-        <h3 class="ui-title">¿Esta seguro que desea salir?</h3>
-        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Cancelar</a>
-        <a  class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b close"  data-transition="flow">Salir</a>
-         </div>
-       </div>
- </div>
+ 
+ 
+ 
+ 
   <div data-role="page" id="pedidos">
       <div data-role="panel" id="panelp6">
       	<img src="img/logob.png" class="elm-cent" width="120px" /><br />
@@ -427,7 +267,7 @@
         <li class="menitem" data-icon="false"><a href="#pedidos" data-transition="slideup">Pedidos</a></li>
         <li class="menitem" data-icon="false"><a href="#ayuda" data-transition="slide">Ayuda</a></li>
         <li class="menitem" data-icon="false"><a href="#notificaciones" data-transition="slide">Notificaciones</a></li>
-        <li class="menitem" data-icon="false"><a href="#popdch" data-rel="popup" data-position-to="window" data-transition="pop">Cerrar Sesión</a></li>
+        <li class="menitem" data-icon="false"><a href="#popdpay" data-rel="popup" data-position-to="window" data-transition="pop">Cerrar Sesión</a></li>
       
       </ul>
      </div>
@@ -459,7 +299,7 @@
     </div>
  	
  	</div>
- 	<div data-role="popup" id="popdch" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+ 	<div data-role="popup" id="popdpay" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
     <div data-role="header" data-theme="a">
     <h1>Cerrar sesión</h1>
     </div>
@@ -575,7 +415,66 @@
        </div>
 
   </div>
-  
+  <div data-role="page" id="prodi">
+	<div data-role="panel" id="panelp10">
+      	<img src="img/logob.png" class="elm-cent" width="120px" /><br />
+      	<img src="img/cuenta.png" class="elm-cent" width="120px" /><br />
+      	<div class="datos elm-cent">
+      		<img src="img/user.png" class="useri" />
+      		<div>
+      		<p class="usuario">correo@electronico.com</p>
+      		</div>
+      	</div>
+      <p class="crediT">Crédito Disponible:</p>
+        <p class="credit">$0.00</p>
+      	<br />
+       <ul data-role="listview">
+        <li class="menitem" data-icon="false"><a href="#inicio" data-transition="slide">Menú</a></li>
+        <li class="menitem" data-icon="false"><a href="#pedidos" data-transition="slideup">Pedidos</a></li>
+        <li class="menitem" data-icon="false"><a href="#ayuda" data-transition="slide">Ayuda</a></li>
+        <li class="menitem" data-icon="false"><a href="#notificaciones" data-transition="slide">Notificaciones</a></li>
+        <li class="menitem" data-icon="false"><a href="#poppi" data-rel="popup" data-position-to="window" data-transition="pop" >Cerrar Sesión</a></li>
+      
+      </ul>
+     </div>
+      <div data-role="header" class="headerb">
+          <a href="#panelp10" id="menbu" class="menub ui-btn ui-icon-home ui-btn-icon-left" ></a>
+          <img class="logoi elm-cent" width="170px"  src="img/comida.png" />
+         <a href="#carrito" data-transition="slideup" class="cart" ></a> 
+    </div>
+  <div data-role="main" class="ui-content">
+    <div class="lback">
+    	<!--<img src="img/bannerc.png"  width="100%" height="250px"/>-->
+    	<div class="innerl">
+    		<div class="innerDiv">
+    			<h1 class="namepr">Nombre del producto</h1>
+    			<p class="descpr">Descripción: </p>
+    			<div class="ui-field-contain">
+    <select name="ingredients[]" class="iselect" id="igds" multiple="multiple" data-native-menu="false">
+        <option>Elije tus ingredientes</option>
+    </select>
+</div>
+<p class="pname"><a class="aplus" href=""><i class="fa fa-plus"></i></a><span class="cants">0</span><a class="aminus" href=""><i class="fa fa-minus"></i></a><span class="price">$10.00</span></p>
+    		</div>
+    		<br /><br /><br />
+    	</div>
+    </div>
+    <div id="addProd" class="fixAdd">
+ 		<button class="addButton">Añadir al Carrito <span>$0.00</span></button>
+ 	</div>
+ 	
+ 	</div>
+ 	<div data-role="popup" id="poppi" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+    <div data-role="header" data-theme="a">
+    <h1>Cerrar sesión</h1>
+    </div>
+       <div role="main" class="ui-content">
+        <h3 class="ui-title">¿Esta seguro que desea salir?</h3>
+        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Cancelar</a>
+        <a  class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b close"  data-transition="flow">Salir</a>
+         </div>
+       </div>
+ </div>
   
   <script src="cordova.js"></script>
   <script src="js/conekta.js"></script>
