@@ -263,6 +263,7 @@ body {
 	 display: flow-root;
 	 color: #fff;
 	 padding: 5px 0;
+	 border-bottom: 2px solid #fff;
 }
 
 #logForm input{

@@ -66,7 +66,7 @@ $(document).ready(function(){
 		if(nombres[0]!=""){
 		for(var i=0;i<nombres.length;i++){
 			//$("#comlist").append('<li><p class="pname">'+nombres[i]+' <a class="aplus" href=""><i class="fa fa-plus "></i></a><span class="cants">0</span><a class="aminus" href=""><i class="fa fa-minus"></i></a><span class="price">$'+precios[i]+'</span></p> </li>');
-			$("#comlist").append('<li><p class="pname"><p class="iname">'+nombres[i]+'</p> <a class="showi" data-prod="'+ids[i]+'" href="" ><img width="20px" src="img/lista.png" /></a><span class="price">$'+precios[i]+'</span></p> </li><hr/>');
+			$("#comlist").append('<li><p class="pname"><span class="iname">'+nombres[i]+'</span> <a class="showi" data-prod="'+ids[i]+'" href="" ><img width="20px" src="img/lista.png" /></a><span class="price">$'+precios[i]+'</span></p> </li>');
 		}
        }
        $.mobile.navigate( "#comida", {transition:"slide" });
@@ -333,7 +333,7 @@ function(isConfirm){
     	for(var i=0;i<prices1.length;i++){
             tc  = tc+parseInt(cants1[i]);
     	    total = total + parseInt(prices1[i]*cants1[i]);
-    	    $("#pedidoL").append('<li><p class="pname"><p class="iname">'+prods1[i]+' ('+cants1[i]+')</p><span class="price">$'+parseFloat(prices1[i]).toFixed(2)+'&nbsp;<a data-item="'+i+'" class="citem" href=""><i class="fa fa-times "></i></a></span></p> </li><hr/>');
+    	    $("#pedidoL").append('<li><p class="pname"><p class="iname">'+prods1[i]+' ('+cants1[i]+')</p><span class="price">$'+parseFloat(prices1[i]).toFixed(2)+'&nbsp;<a data-item="'+i+'" class="citem" href=""><i class="fa fa-times "></i></a></span></p> </li>');
     	}
 
     	$("#total").append('<p>Total de orden ('+tc+' artículo(s))</p><h1 >$'+total+'</h1>');
