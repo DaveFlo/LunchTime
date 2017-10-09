@@ -104,7 +104,7 @@ body {
 	float: right;
 	color: orange;
 }
-.aplus,.aminus,.atimes,.showi{
+.aplus,.aminus,.atimes,.showi,.citem{
 	margin-top:-5px;
 	border: 1px solid orange;
 	padding: 3px 5px;
@@ -117,7 +117,7 @@ body {
 	
 	float: right;
 }
-.aplus:hover, .aminus:hover, .atimes:hover{
+.aplus:hover, .aminus:hover, .atimes:hover, .citem:hover{
 	border: 1px solid #fff;
 	color: #fff !important;
 }
@@ -263,7 +263,6 @@ body {
 	 display: flow-root;
 	 color: #fff;
 	 padding: 5px 0;
-	 border-bottom: 2px solid #fff;
 }
 
 #logForm input{

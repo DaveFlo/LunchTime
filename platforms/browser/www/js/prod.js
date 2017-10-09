@@ -66,7 +66,7 @@ $(document).ready(function(){
 		if(nombres[0]!=""){
 		for(var i=0;i<nombres.length;i++){
 			//$("#comlist").append('<li><p class="pname">'+nombres[i]+' <a class="aplus" href=""><i class="fa fa-plus "></i></a><span class="cants">0</span><a class="aminus" href=""><i class="fa fa-minus"></i></a><span class="price">$'+precios[i]+'</span></p> </li>');
-			$("#comlist").append('<li><p class="pname"><p class="iname">'+nombres[i]+'</p> <a class="showi" data-prod="'+ids[i]+'" href="" ><img width="20px" src="img/lista.png" /></a><span class="price">$'+precios[i]+'</span></p> </li>');
+			$("#comlist").append('<li><p class="pname"><p class="iname">'+nombres[i]+'</p> <a class="showi" data-prod="'+ids[i]+'" href="" ><img width="20px" src="img/lista.png" /></a><span class="price">$'+precios[i]+'</span></p> </li><hr/>');
 		}
        }
        $.mobile.navigate( "#comida", {transition:"slide" });
@@ -290,6 +290,26 @@ function(isConfirm){
 });
     	
     });
+    $("#pedidoL").on('click', '.citem', function(e) {
+    	var elm = $(this).data("item");
+    	swal({
+  title: "¿Está seguro que desea eliminar este producto de su orden?",
+  text: "",
+  type: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#DD6B55",
+  confirmButtonText: "Aceptar",
+  showLoaderOnConfirm: true,
+  closeOnConfirm: false,
+  cancelButtonText: "Cancelar",
+},
+function(isConfirm){
+	if(isConfirm){
+ 	removeItem(elm);
+ }
+});
+    	
+    });
     if(localStorage.getItem("prods")!=null){
     
      addToCart();
@@ -306,11 +326,14 @@ function(isConfirm){
     	var prods1 =JSON.parse( localStorage.getItem("prods"));
     	var cants1 =JSON.parse( localStorage.getItem("cants"));
     	var esps1 =JSON.parse( localStorage.getItem("espf"));
+    	if(prods.length==0){
+    	$("#payOrder").prop("disabled",true);	
+    	}
     	$("#pedidoL").append('<li><p class="pname">Resumen de orden <span id="totalT" class="price"></span></p> </li>');
     	for(var i=0;i<prices1.length;i++){
             tc  = tc+parseInt(cants1[i]);
     	    total = total + parseInt(prices1[i]*cants1[i]);
-    	    $("#pedidoL").append('<li><p class="pname">'+prods1[i]+' ('+cants1[i]+')<span class="price">$'+parseFloat(prices1[i]).toFixed(2)+'</span></p> </li>');
+    	    $("#pedidoL").append('<li><p class="pname"><p class="iname">'+prods1[i]+' ('+cants1[i]+')</p><span class="price">$'+parseFloat(prices1[i]).toFixed(2)+'&nbsp;<a data-item="'+i+'" class="citem" href=""><i class="fa fa-times "></i></a></span></p> </li><hr/>');
     	}
 
     	$("#total").append('<p>Total de orden ('+tc+' artículo(s))</p><h1 >$'+total+'</h1>');
@@ -333,6 +356,25 @@ function(isConfirm){
     }
     	
   });
+    }
+    function removeItem(elm){
+    	var prices1 =JSON.parse( localStorage.getItem("prices"));
+    	var prods1 =JSON.parse( localStorage.getItem("prods"));
+    	var cants1 =JSON.parse( localStorage.getItem("cants"));
+    	var esps1 =JSON.parse( localStorage.getItem("espf"));
+    	prices1.splice(elm, 1);
+    	prods1.splice(elm, 1);
+    	cants1.splice(elm, 1);
+    	esps1.splice(elm, 1);
+    	localStorage.setItem("prices",JSON.stringify(prices1));
+    	localStorage.setItem("prods",JSON.stringify(prods1));
+    	localStorage.setItem("cants",JSON.stringify(cants1));
+    	localStorage.setItem("espf",JSON.stringify(esps1));
+    	addToCart();
+    	if(prods.length==0){
+    	$("#payOrder").prop("disabled",true);	
+    	}
+    	swal.close();
     }
     
   function payOrder( ){
@@ -364,6 +406,7 @@ function(isConfirm){
             localStorage.removeItem("prods");
             localStorage.removeItem("prices");
             localStorage.removeItem("cants");
+            $("#comentarios").val("");
             $("#pedidoL").html("");
             $("#pedidoL").append('<li><p class="pname">Resumen de orden <span id="totalT" class="price"></span></p> </li>');
             $("#total").html("");
