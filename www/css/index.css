@@ -198,7 +198,7 @@ body {
 	text-transform: uppercase;
 }
 .innerl ul{
-	
+	list-style:none;
 	padding: 10px 25px;
 	 -webkit-transform: skewX(2.5deg) rotate(2.5deg);  ;
     -khtml-transform: skewX(2.5deg) rotate(2.5deg);  ;
@@ -263,6 +263,7 @@ body {
 	 display: flow-root;
 	 color: #fff;
 	 padding: 5px 0;
+	 
 	 border-bottom: 2px solid #fff;
 }
 
@@ -419,7 +420,7 @@ body {
 	 overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: 170px;
+  max-width: 90px;
 }
 #igds{
 	display: none;

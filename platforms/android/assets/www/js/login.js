@@ -8,6 +8,26 @@ if(localStorage.getItem("school")!=null){
 var user="";
     var school="";
     var ban = false;
+     function getCredit(){
+ 	var user = localStorage.getItem("user");
+	$.ajax({
+	url: "http://www.icone-solutions.com/tlunch/sqlOP.php",
+	type: "POST",
+	data: {correo: user},
+	success: function(data){
+		$(".loads").hide();
+		
+	    	var jsonObj = jQuery.parseJSON(data);
+	    	
+	    	credit = jsonObj[0];
+            localStorage.setItem("credit",credit);
+            $(".credit").text("$"+localStorage.getItem("credit"));
+            
+	    	
+	}
+
+        });
+	}
     function login(){
     	var form = new FormData($("#logForm")[0]);
     	
@@ -35,6 +55,7 @@ var user="";
             localStorage.setItem("credit",credit);
             $(".usuario").text(localStorage.getItem("nombre"));
             getCategories();
+            getCredit();
 	    	$.mobile.navigate( "#inicio", { transition : "slide",info: "info about the #foo hash" });
 
 
@@ -121,30 +142,12 @@ $(document).ready(function(){
 	setTimeout("register()",3000);
    });
    
-    var iFrequency = 5000; // expressed in miliseconds
-      var myInterval = 0;
+
 
       // STARTS and Resets the loop if any
- function getCredit(){
- 	var user = localStorage.getItem("user");
-	$.ajax({
-	url: "http://www.icone-solutions.com/tlunch/sqlOP.php",
-	type: "POST",
-	data: {correo: user},
-	success: function(data){
-		$(".loads").hide();
-		
-	    	var jsonObj = jQuery.parseJSON(data);
-	    	
-	    	credit = jsonObj[0];
-            localStorage.setItem("credit",credit);
-            $(".credit").text("$"+localStorage.getItem("credit"));
-            
-	    	
-	}
-
-        });
-	}
+    $(".menub").click(function(){
+    	getCredit();
+    });
 	
 	function getSchools(){
 	$.ajax({
@@ -167,13 +170,8 @@ $(document).ready(function(){
    
     });
     }
-function startLoop() {
-    
-    myInterval = setInterval( getCredit, iFrequency ); 
- 
-}
+
 
 getSchools();
 
-startLoop();
 });

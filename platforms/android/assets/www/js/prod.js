@@ -65,8 +65,12 @@ $(document).ready(function(){
 		var ids = jsonObj[2].split("_");
 		if(nombres[0]!=""){
 		for(var i=0;i<nombres.length;i++){
+			var extra = "";
+			if(nombres[i].length >20){
+				var extra = "...";
+			}
 			//$("#comlist").append('<li><p class="pname">'+nombres[i]+' <a class="aplus" href=""><i class="fa fa-plus "></i></a><span class="cants">0</span><a class="aminus" href=""><i class="fa fa-minus"></i></a><span class="price">$'+precios[i]+'</span></p> </li>');
-			$("#comlist").append('<li><p class="pname"><span class="iname">'+nombres[i]+'</span> <a class="showi" data-prod="'+ids[i]+'" href="" ><img width="20px" src="img/lista.png" /></a><span class="price">$'+precios[i]+'</span></p> </li>');
+			$("#comlist").append('<li><p class="pname"><span class="iname">'+nombres[i].substr(0,20)+extra+'</span> <a class="showi" data-prod="'+ids[i]+'" href="" ><img width="20px" src="img/lista.png" /></a><span class="price">$'+precios[i]+'</span></p> </li>');
 		}
        }
        $.mobile.navigate( "#comida", {transition:"slide" });
