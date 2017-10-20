@@ -51,13 +51,14 @@ $(document).ready(function(){
     });
     }
     function getFood(cat){
-    	
+    var sc =	localStorage.getItem("school");
 	$.ajax({
 	url: "http://www.icone-solutions.com/tlunch/sqlOP.php",
 	type: "POST",
-	data: {foodc: cat},
+	data: {foodc: cat, sc:sc},
 	
 	success: function(data){
+		console.log(data);
         $("#comlist").empty();
 		var jsonObj = jQuery.parseJSON(data);
 		var nombres = jsonObj[0].split("_");
@@ -73,6 +74,7 @@ $(document).ready(function(){
 			$("#comlist").append('<li><p class="pname"><span class="iname">'+nombres[i].substr(0,20)+extra+'</span> <a class="showi" data-prod="'+ids[i]+'" href="" ><img width="20px" src="img/lista.png" /></a><span class="price">$'+precios[i]+'</span></p> </li>');
 		}
        }
+       
        $.mobile.navigate( "#comida", {transition:"slide" });
     }
    
@@ -103,6 +105,12 @@ $(document).ready(function(){
    
     });
     }
+    $(".promo").on('click',  function(e) {
+    	
+    	var cat = "promos"
+    	getFood(cat);
+    	
+    });
     $("#categories").on('click', '.gtsec', function(e) {
     	
     	var cat = $(this).data("catg");
@@ -337,7 +345,7 @@ function(isConfirm){
     	for(var i=0;i<prices1.length;i++){
             tc  = tc+parseInt(cants1[i]);
     	    total = total + parseInt(prices1[i]*cants1[i]);
-    	    $("#pedidoL").append('<li><p class="pname"><p class="iname">'+prods1[i]+' ('+cants1[i]+')</p><span class="price">$'+parseFloat(prices1[i]).toFixed(2)+'&nbsp;<a data-item="'+i+'" class="citem" href=""><i class="fa fa-times "></i></a></span></p> </li>');
+    	    $("#pedidoL").append('<li><p class="pname"><span class="iname">'+prods1[i]+' ('+cants1[i]+')</span><span class="price">$'+parseFloat(prices1[i]).toFixed(2)+'&nbsp;<a data-item="'+i+'" class="citem" href=""><i class="fa fa-times "></i></a></span></p> </li>');
     	}
 
     	$("#total").append('<p>Total de orden ('+tc+' artículo(s))</p><h1 >$'+total+'</h1>');
