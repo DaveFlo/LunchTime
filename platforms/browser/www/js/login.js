@@ -15,7 +15,7 @@ var user="";
 	type: "POST",
 	data: {correo: user},
 	success: function(data){
-		$(".loads").hide();
+		 $.mobile.loading( "hide" );
 		
 	    	var jsonObj = jQuery.parseJSON(data);
 	    	
@@ -28,6 +28,28 @@ var user="";
 
         });
 	}
+	function getSchoolsC(){
+	
+	$.ajax({
+	url: "http://www.icone-solutions.com/tlunch/sqlOP.php",
+	type: "POST",
+	data: {gs: 0},
+	
+	success: function(data){
+		console.log(data);
+        $(".schoolS").empty();
+		var jsonObj = jQuery.parseJSON(data);
+		
+		for(var i=0;i<jsonObj.length;i++){
+			
+			$(".schoolS").append('<option value="'+jsonObj[i][0]+'"  >'+jsonObj[i][1]+'</option>');
+			
+		}
+       
+    }
+   
+    });
+    }
     function login(){
     	var form = new FormData($("#logForm")[0]);
     	
@@ -39,10 +61,9 @@ var user="";
 	contentType: false,
 	cache: false,
 	processData:false,
-	async: false,
 	success: function(data){
 		
-		$(".loads").hide();
+		 $.mobile.loading( "hide" );
 	    if(data.toString()!=="0"){
 	    	var datos = data.toString().split(",");
 	    	user = datos[0];
@@ -71,6 +92,7 @@ var user="";
     }
     function getCategories(){
     var esc = localStorage.getItem("school");
+    console.log(esc);
 	$.ajax({
 	url: "http://www.icone-solutions.com/tlunch/sqlOP.php",
 	type: "POST",
@@ -102,9 +124,8 @@ var user="";
 	contentType: false,
 	cache: false,
 	processData:false,
-	async: false,
 	success: function(data){
-		$(".loads").hide();
+		 $.mobile.loading( "hide" );
 	    if(data.toString()=="0"){
 	    	var datos = data.toString().split(",");
 	    	
@@ -116,32 +137,106 @@ var user="";
            swal("Error",data.toString(),"error");
 	    }
 	    $("#rega").prop("disabled",false);
-	}
+	    }
 
         });
     }
-$(document).ready(function(){
     
+    function forgetP(){
+    	var form = new FormData($("#forForm")[0]);
+    	$.ajax({
+	url: "http://www.icone-solutions.com/tlunch/forget.php",
+	type: "POST",
+	data: form,
+	contentType: false,
+	cache: false,
+	processData:false,
+	success: function(data){
+		 $.mobile.loading( "hide" );
+	    if(data.toString()=="0"){
+	    	
+	    	
+            swal("Listo","Se ha enviado un mensaje a tu cuenta de correo con la información de tu contraseña.","success");
+	    	$.mobile.navigate( "#login", { transition : "slideup",info: "info about the #foo hash" });
+
+
+	    }else{
+           swal("Error",data.toString(),"error");
+	    }
+	    $("#forg").prop("disabled",false);
+	    }
+
+        });
+    }
+    
+$(document).ready(function(){
+	getSchoolsC();
+    $(".schoolS").change(function(){
+    	localStorage.setItem("school",$(this).val());
+    	getCategories();
+    });
     $("#logForm").submit(function(e){
     	e.preventDefault();
 	$("#mess").hide();
 	var form = this;
 	$("#enter").prop("disabled",true);
-	$(".loads").show();
+	 html = $(this).jqmData( "html" ) || "";
+	$.mobile.loading( "show", {
+            text: "Cargando",
+            textVisible: true,
+            theme: "b",
+            textonly: false,
+            html: html
+            });
 	
-	setTimeout("login()",3000);
+	login();
    });
    
    $("#regForm").submit(function(e){
-    	e.preventDefault();
-	$("#mess").hide();
-	var form = this;
-	$("#rega").prop("disabled",true);
-	$(".loads").show();
+    e.preventDefault();
+    var empty = $(this).find("input").filter(function() {
+    	
+        return this.value === "";
+    });
+    if(!empty.length) {
+       $("#mess").hide();
+	   html = $(this).jqmData( "html" ) || "";
+	   $("#rega").prop("disabled",true);
+	   $.mobile.loading( "show", {
+            text: "Cargando",
+            textVisible: true,
+            theme: "b",
+            textonly: false,
+            html: html
+            });
+	   register();
+    }else{
+    	swal("Campos vacios","Debes completar todos los campos");
+    }
 	
-	setTimeout("register()",3000);
    });
-   
+   $("#forForm").submit(function(e){
+    e.preventDefault();
+    var empty = $(this).find("input").filter(function() {
+    	
+        return this.value === "";
+    });
+    if(!empty.length) {
+	   html = $(this).jqmData( "html" ) || "";
+	   $("#forg").prop("disabled",true);
+	   $.mobile.loading( "show", {
+            text: "Cargando",
+            textVisible: true,
+            theme: "b",
+            textonly: false,
+            html: html
+            });
+	  forgetP();
+    }else{
+    	swal("Campos vacios","Debes completar todos los campos");
+    }
+	
+   });
 
 
       // STARTS and Resets the loop if any

@@ -428,6 +428,15 @@ body {
 #igds-listbox{
 	background: #000;
 }
+.schoolS{
+	width: 100% !important;
+	border-radius: 5px;
+	padding: 5px 8px;
+	font-family: "futuraL";
+}
+span.schoolS{
+	display: none !important;
+}
 #schoolList{
 	width: 300px !important;
 	display: table !important;
@@ -435,6 +444,12 @@ body {
 	background: #ccc !important;
 	border-radius: 3px !important;
 	padding: 5px 0;
+}
+.ui-select > .ui-btn.ui-icon-carat-d.ui-btn-icon-right.ui-corner-all.ui-shadow{
+	border:none;
+	box-shadow: none;
+	padding-right: 0;
+	padding-left: 0;
 }
 #schoolList-button.ui-btn.ui-icon-carat-d.ui-btn-icon-right.ui-corner-all.ui-shadow{
 	border:none;

@@ -43,7 +43,7 @@ $(document).ready(function(){
 		if(productos[0]!=""){
 			$("#orderlist").append('<li><p class="tname">Productos <span class="pricet">Tiempo estimado</span> <span class="pricet">Total</span></p></li>');
 		for(var i=0;i<tiempo.length;i++){
-			$("#orderlist").append('<li><p class="pname">'+productos[i]+' </p><a id="'+id[i]+'" class="atimes" href=""><i class="fa fa-times "></i></a><span class="price">'+tiempo[i]+'</span> <span class="price">$'+total[i]+'</span></li>');
+			$("#orderlist").append('<li><p class="pname"><span class="iname">'+productos[i]+'</span> <a id="'+id[i]+'" class="atimes" href=""><i class="fa fa-times "></i></a><span class="price">'+tiempo[i]+'</span> <span class="price">$'+total[i]+'</span></p></li>');
 		}
        }
     }
@@ -58,7 +58,6 @@ $(document).ready(function(){
 	data: {foodc: cat, sc:sc},
 	
 	success: function(data){
-		console.log(data);
         $("#comlist").empty();
 		var jsonObj = jQuery.parseJSON(data);
 		var nombres = jsonObj[0].split("_");
@@ -210,7 +209,6 @@ $(document).ready(function(){
     	var text2= $(this).parent().parent().parent().find(".pname").find(".price").text().split("$");
     	var val = $(this).val();
     	val = val.toString();
-    	console.log(val);
     	if(prods.indexOf(name)==-1){
     		prods.push(name);
     	    esps.push(val);
@@ -359,7 +357,8 @@ function(isConfirm){
 	 data: {cancel:elm},
     
 	 success: function(data){
-	 	if(data.toString()!=="0"){
+	 	
+	 	if(data.toString()!=="error"){
 	 		getOrders();
 	 		swal("Listo","Tu orden ha sido cancelada. Tu penalización fue de: $"+data.toString(),"success");
 	 	}else{
@@ -410,7 +409,7 @@ function(isConfirm){
     
 	 success: function(data){
 		
-      console.log(data);
+      
 		
 	    if(data.toString()=="0"){
 	      getOrders();
