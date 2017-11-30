@@ -36,13 +36,17 @@ var user="";
 	data: {gs: 0},
 	
 	success: function(data){
-		console.log(data);
+		
         $(".schoolS").empty();
 		var jsonObj = jQuery.parseJSON(data);
 		
 		for(var i=0;i<jsonObj.length;i++){
-			
+			if(localStorage.getItem("school")==jsonObj[i][0]){
+			$(".schoolS").append('<option selected value="'+jsonObj[i][0]+'"  >'+jsonObj[i][1]+'</option>');
+			}else{
 			$(".schoolS").append('<option value="'+jsonObj[i][0]+'"  >'+jsonObj[i][1]+'</option>');
+			}
+			
 			
 		}
        
@@ -251,7 +255,7 @@ $(document).ready(function(){
 	data: {school: 1},
 	
 	success: function(data){
-            
+		
 		var jsonObj = jQuery.parseJSON(data);
 		var id = jsonObj[0].split(",");
 		var nombres = jsonObj[1].split(",");

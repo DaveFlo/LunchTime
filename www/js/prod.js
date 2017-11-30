@@ -46,7 +46,10 @@ $(document).ready(function(){
 			$("#orderlist").append('<li><p class="pname"><span class="iname">'+productos[i]+'</span> <a id="'+id[i]+'" class="atimes" href=""><i class="fa fa-times "></i></a><span class="price">'+tiempo[i]+'</span> <span class="price">$'+total[i]+'</span></p></li>');
 		}
        }
-    }
+    },
+	error: function(data){
+		swal("Error","Revisa tu conexión y vuelve a intentarlo","error")
+	}
    
     });
     }
@@ -100,7 +103,10 @@ $(document).ready(function(){
 			}
 		}
        
-    }
+    },
+	error: function(data){
+		swal("Error","Revisa tu conexión y vuelve a intentarlo","error")
+	}
    
     });
     }
@@ -144,7 +150,10 @@ $(document).ready(function(){
        $(".innerDiv").find(".descpr").append("<br/>"+jsonObj[2]);
        $(".innerDiv").find(".price").text("$"+jsonObj[1]);
 		
-  }
+  },
+	error: function(data){
+		swal("Error","Revisa tu conexión y vuelve a intentarlo","error")
+	}
     });
     	 $.mobile.navigate( "#prodi", { transition : "slideup",info: "info about the #foo hash" });
     });
@@ -364,7 +373,10 @@ function(isConfirm){
 	 	}else{
 	 		swal("Error","Ocurrió un error al cancelar tu orden, porfavor intentalo de nuevo.","error");
 	 	}
-    }
+    },
+	error: function(data){
+		swal("Error","Revisa tu conexión y vuelve a intentarlo","error")
+	}
     	
   });
     }
@@ -429,6 +441,9 @@ function(isConfirm){
   
     
 
+	},
+	error: function(data){
+		swal("Error","Revisa tu conexión y vuelve a intentarlo","error")
 	}
 
   });
