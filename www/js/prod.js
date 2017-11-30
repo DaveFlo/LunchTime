@@ -347,7 +347,7 @@ function(isConfirm){
     	var prods1 =JSON.parse( localStorage.getItem("prods"));
     	var cants1 =JSON.parse( localStorage.getItem("cants"));
     	var esps1 =JSON.parse( localStorage.getItem("espf"));
-    	if(prods.length==0){
+    	if(prods1.length==0){
     	$("#payOrder").prop("disabled",true);	
     	}
     	$("#pedidoL").append('<li><p class="pname">Resumen de orden <span id="totalT" class="price"></span></p> </li>');
