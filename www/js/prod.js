@@ -3,7 +3,9 @@ $(document).ready(function(){
     var prices =new Array();
     var cants =new Array();
     var esps =new Array();
-   
+   if(localStorage.getItem("prods")!=null){
+   	$("#payOrder").prop("disabled",false);
+   }
     $(document).on( "pagechange", function( event ) { 
     	prices =new Array();
     	prods =new Array();
